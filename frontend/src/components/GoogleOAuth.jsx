@@ -6,7 +6,7 @@ class GoogleOAuth extends Component {
     responseGoogle=(response)=>{
         // console.log(response);
         if(response.error){
-            console.log('account does not exist');
+            console.log('Account does not Exist!');
         }else{
             console.log(response.profileObj);
             const obj={
