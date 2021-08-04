@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import JobService from '../api/JobService';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import ToastComponent from './ToastComponent'
 // import Job from './Job';
 
 class Welcome extends Component {
@@ -13,6 +16,7 @@ class Welcome extends Component {
 
     componentDidMount() {
         console.log('component did mount');
+
         this.refresh();
     }
 
@@ -30,13 +34,15 @@ class Welcome extends Component {
         console.log('render');
         return (
             <div>
-                <h1 className="display-3">You have successfully logged in!</h1>
-                <Link to="/jobDetails"> <button className="btn btn-success btn-sm">Add Job</button> </Link>
-
+                <ToastComponent />
+                <div className="text-center p-3">
+                    <Link to="/jobDetails"> <button className="btn btn-danger">Add New Job</button> </Link>
+                </div>
+                
                 <div className="container">
                     {
                         this.state.allJobs.map((job) => {
-                            return <div key={job.id} className="card m-4 " style={{width:300, display:'inline-block'}}>
+                            return <div key={job.id} className="card m-4 " style={{ width: 300, display: 'inline-block' }}>
                                 <div className="card-body">
                                     <h5 className="card-title">{job.position}</h5>
                                     <p className="card-text">Job Id : {job.jobId}</p>
